@@ -10,10 +10,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { StudentsComponent } from './students/students.component';
+import { StaffComponent } from './staff/staff.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,10 @@ import { AppComponent } from './app.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatButtonModule
+    MatButtonModule,
+    HomeComponent,
+    StudentsComponent,
+    StaffComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
