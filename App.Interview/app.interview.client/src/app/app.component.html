@@ -4,39 +4,15 @@
     </button>
     <span>Home</span>
 </mat-toolbar>
-<mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #drawer class="sidenav" mode="over" [opened]="false">
+<mat-sidenav-container class="sidenav-container">    <mat-sidenav #drawer class="sidenav" mode="over" [opened]="false">
         <mat-nav-list>
-            <a mat-list-item href="#">Home</a>
-            <a mat-list-item href="#">Students</a>
-            <a mat-list-item href="#">Staff</a>
+            <a mat-list-item routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+            <a mat-list-item routerLink="/students" routerLinkActive="active">Students</a>
+            <a mat-list-item routerLink="/staff" routerLinkActive="active">Staff</a>
         </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content>
-        <div class="content">
-            <h1 id="tableLabel">Welcome to FAKE SIS</h1>
-            <p>This component demonstrates fetching data from the server.</p>
-            <p *ngIf="!forecasts"><em>Loading... Please refresh once the ASP.NET backend has started. See <a
-                        href="https://aka.ms/jspsintegrationangular">https://aka.ms/jspsintegrationangular</a> for more
-                    details.</em></p>
-            <table *ngIf="forecasts">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Temp. (C)</th>
-                        <th>Temp. (F)</th>
-                        <th>Summary</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let forecast of forecasts">
-                        <td>{{ forecast.date }}</td>
-                        <td>{{ forecast.temperatureC }}</td>
-                        <td>{{ forecast.temperatureF }}</td>
-                        <td>{{ forecast.summary }}</td>
-                    </tr>
-                </tbody>
-            </table>
+    <mat-sidenav-content>        <div class="content">
+            <router-outlet></router-outlet>
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
