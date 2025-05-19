@@ -1,4 +1,33 @@
 <div class="content">
-  <h2>Students Page</h2>
-  <p>List of students will go here.</p>
+  <h2>Students</h2>
+  
+  <div *ngIf="loading" class="loading">
+    Loading students...
+  </div>
+
+  <div *ngIf="error" class="error">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!loading && !error" class="table-container">
+    <table *ngIf="students.length > 0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students">
+          <td>{{ student.id }}</td>
+          <td>{{ student.name }}</td>
+          <td>{{ student.email }}</td>
+          <td>{{ student.grade }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p *ngIf="students.length === 0" class="no-data">No students found.</p>
+  </div>
 </div>
