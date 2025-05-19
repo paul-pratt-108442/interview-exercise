@@ -6,7 +6,7 @@ using App.Interview.Server.Models;
 namespace App.Interview.Server.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class StaffController : ControllerBase
     {
         private readonly ApplicationDbContext _context;

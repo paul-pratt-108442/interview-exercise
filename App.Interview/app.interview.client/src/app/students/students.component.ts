@@ -2,11 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 
-interface Student {
+interface Roster {
+  // Adding Roster interface as it's referenced in Student
+  // Add more properties as needed when we know more about the Roster model
   id: number;
-  name: string;
-  email: string;
-  grade: string;
+}
+
+interface Student {
+  studentId: number;
+  firstName: string;
+  lastName: string;
+  rosters: Roster[];
 }
 
 @Component({
@@ -26,11 +32,16 @@ export class StudentsComponent implements OnInit {
   ngOnInit() {
     this.fetchStudents();
   }
-
   fetchStudents() {
-    this.http.get<Student[]>('/students').subscribe({
+    this.http.get<Student[]>('/api/students').subscribe({
       next: (students) => {
-        this.students = students;
+        this.students = students.map(student => ({
+          ...student,
+          // Ensure all required properties exist even if backend doesn't provide them
+          firstName: student.firstName || '',
+          lastName: student.lastName || '',
+          rosters: student.rosters || []
+        }));
         this.loading = false;
       },
       error: (error) => {
