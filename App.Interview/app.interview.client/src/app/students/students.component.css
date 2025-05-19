@@ -1,36 +1,15 @@
 /* Styles for students component */
-.content {
-  padding: 20px;
-}
-table {
-  width: 800px;
-  border-collapse: collapse;
-  background-color: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-}
 
-th,
-td {
-  padding: 12px 16px;
-  text-align: left;
-  border-bottom: 1px solid #eee;
-}
-
-th {
-  background-color: #f8f9fa;
-  font-weight: 600;
-  color: #333;
-}
-
-tr:hover {
-  background-color: #f8f9fa;
+.table-container {
+  width: 100%;
+  max-width: 800px;
+  overflow: auto;
 }
 
 .loading {
   text-align: center;
   padding: 20px;
-  color: #666;
+  color: rgba(0, 0, 0, 0.54);
 }
 
 .error {
@@ -43,6 +22,6 @@ tr:hover {
 
 .no-data {
   text-align: center;
-  color: #666;
+  color: rgba(0, 0, 0, 0.54);
   padding: 20px;
 }

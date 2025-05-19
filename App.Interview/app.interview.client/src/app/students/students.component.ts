@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
 
 interface Roster {
   // Adding Roster interface as it's referenced in Student
@@ -18,7 +19,7 @@ interface Student {
 @Component({
   selector: 'app-students',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatTableModule],
   templateUrl: './students.component.html',
   styleUrls: ['./students.component.css']
 })
@@ -26,6 +27,7 @@ export class StudentsComponent implements OnInit {
   students: Student[] = [];
   loading = true;
   error = '';
+  displayedColumns: string[] = ['studentId', 'firstName', 'lastName'];
 
   constructor(private http: HttpClient) {}
 
