@@ -6,3 +6,11 @@ html {
     --mat-toolbar-container-text-color: white;
     --mat-icon-color: white;
 }
+
+.mat-column-courseId {
+  max-width: 120px;
+}
+
+.mat-column-rosters {
+    max-width: 120px;
+}
