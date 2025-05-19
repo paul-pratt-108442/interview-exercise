@@ -6,9 +6,9 @@ This application is designed as a technical coding exercise for interviews. It p
 
 ## About the Application
 
-This is a simplified school information management system that consists of both a frontend Angular application and a .NET backend API. The system allows users to:
-- View and manage student information
-- View and manage staff information
+This is a simplified school information management system that consists of both a frontend Angular application and a .NET backend API. The system currently allows users to:
+- View students and their enrolled courses
+- View staff and their assigned courses
 - Navigate between different sections of the application
 
 ### Frontend
@@ -45,10 +45,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Angular framework
 - TypeScript
 - Angular Router for navigation
-- Modern component-based architecture
 
 ### Backend
 - .NET Web API
 - Entity Framework Core
 - SQLite provider with in-memory configuration
-- Repository pattern implementation
