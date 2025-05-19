@@ -6,6 +6,10 @@
     flex-direction: column;
 }
 
+.header-toolbar {
+    gap: 16px;
+}
+
 .sidenav-container {
     flex-grow: 1;
 }

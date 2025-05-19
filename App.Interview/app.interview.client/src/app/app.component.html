@@ -1,8 +1,8 @@
-﻿<mat-toolbar color="primary">
+﻿<mat-toolbar color="primary" class="header-toolbar">
     <button mat-icon-button (click)="drawer.toggle()">
         <mat-icon aria-label="Toggle navigation">menu</mat-icon>
     </button>
-    <span>Home</span>
+    <span>{{currentTitle}}</span>
 </mat-toolbar>
 <mat-sidenav-container class="sidenav-container">    <mat-sidenav #drawer class="sidenav" mode="over" [opened]="false">
         <mat-nav-list>
