@@ -25,17 +25,10 @@ namespace App.Interview.Server.Controllers
         [HttpGet("{staffId}/courses")]
         public async Task<ActionResult<IEnumerable<Course>>> GetStaffCourses(int staffId)
         {
-            var courses = await _context.Courses
+            return await _context.Courses
                 .Include(c => c.Rosters)
                 .Where(c => c.StaffId == staffId)
                 .ToListAsync();
-
-            if (!courses.Any())
-            {
-                return NotFound();
-            }
-
-            return courses;
         }
     }
 }

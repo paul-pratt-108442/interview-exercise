@@ -81,90 +81,206 @@ namespace App.Interview.Server.Data
 
             // Seed Courses
             modelBuilder.Entity<Models.Course>().HasData(
-                new Models.Course { CourseId = 1, CourseName = "Transfiguration", StaffId = 1 },
-                new Models.Course { CourseId = 2, CourseName = "Potions", StaffId = 2 },
-                new Models.Course { CourseId = 3, CourseName = "Charms", StaffId = 3 },
-                new Models.Course { CourseId = 4, CourseName = "Herbology", StaffId = 4 },
-                new Models.Course { CourseId = 5, CourseName = "Defense Against the Dark Arts", StaffId = 5 },
-                new Models.Course { CourseId = 6, CourseName = "Care of Magical Creatures", StaffId = 6 }
+                // Transfiguration by House
+                new Models.Course { CourseId = 1, CourseName = "Transfiguration - Gryffindor", StaffId = 1 },
+                new Models.Course { CourseId = 2, CourseName = "Transfiguration - Slytherin", StaffId = 1 },
+                new Models.Course { CourseId = 3, CourseName = "Transfiguration - Ravenclaw", StaffId = 1 },
+                new Models.Course { CourseId = 4, CourseName = "Transfiguration - Hufflepuff", StaffId = 1 },
+
+                // Potions - Combined Classes
+                new Models.Course { CourseId = 5, CourseName = "Potions - Gryffindor & Slytherin", StaffId = 2 },
+                new Models.Course { CourseId = 6, CourseName = "Potions - Hufflepuff & Ravenclaw", StaffId = 2 },
+
+                // Charms by House
+                new Models.Course { CourseId = 7, CourseName = "Charms - Gryffindor", StaffId = 3 },
+                new Models.Course { CourseId = 8, CourseName = "Charms - Slytherin", StaffId = 3 },
+                new Models.Course { CourseId = 9, CourseName = "Charms - Ravenclaw", StaffId = 3 },
+                new Models.Course { CourseId = 10, CourseName = "Charms - Hufflepuff", StaffId = 3 },
+
+                // Herbology - Combined Classes
+                new Models.Course { CourseId = 11, CourseName = "Herbology - Gryffindor & Hufflepuff", StaffId = 4 },
+                new Models.Course { CourseId = 12, CourseName = "Herbology - Slytherin & Ravenclaw", StaffId = 4 },
+
+                // Defense Against the Dark Arts - Combined Classes
+                new Models.Course { CourseId = 13, CourseName = "Defense Against Dark Arts - Gryffindor & Ravenclaw", StaffId = 5 },
+                new Models.Course { CourseId = 14, CourseName = "Defense Against Dark Arts - Hufflepuff & Slytherin", StaffId = 5 },
+
+                // Care of Magical Creatures - Combined Classes
+                new Models.Course { CourseId = 15, CourseName = "Care of Magical Creatures - Gryffindor & Slytherin", StaffId = 6 },
+                new Models.Course { CourseId = 16, CourseName = "Care of Magical Creatures - Hufflepuff & Ravenclaw", StaffId = 6 }
             );
 
             // Seed Course Rosters
             modelBuilder.Entity<Models.Roster>().HasData(
-                // Transfiguration Class
+                // Transfiguration - Gryffindor
                 new Models.Roster { CourseId = 1, StudentId = 1 },  // Harry
                 new Models.Roster { CourseId = 1, StudentId = 2 },  // Hermione
                 new Models.Roster { CourseId = 1, StudentId = 3 },  // Ron
-                new Models.Roster { CourseId = 1, StudentId = 4 },  // Draco
+                new Models.Roster { CourseId = 1, StudentId = 10 }, // Fred
+                new Models.Roster { CourseId = 1, StudentId = 11 }, // George
                 new Models.Roster { CourseId = 1, StudentId = 12 }, // Seamus
                 new Models.Roster { CourseId = 1, StudentId = 13 }, // Dean
-                new Models.Roster { CourseId = 1, StudentId = 19 }, // Crabbe
-                new Models.Roster { CourseId = 1, StudentId = 20 }, // Goyle
-                new Models.Roster { CourseId = 1, StudentId = 21 }, // Pansy
-                new Models.Roster { CourseId = 1, StudentId = 28 }, // Terry
-                new Models.Roster { CourseId = 1, StudentId = 29 }, // Anthony
+                new Models.Roster { CourseId = 1, StudentId = 14 }, // Lavender
+                new Models.Roster { CourseId = 1, StudentId = 15 }, // Parvati
 
-                // Potions Class
-                new Models.Roster { CourseId = 2, StudentId = 1 },  // Harry
-                new Models.Roster { CourseId = 2, StudentId = 2 },  // Hermione
-                new Models.Roster { CourseId = 2, StudentId = 3 },  // Ron
+                // Transfiguration - Slytherin
                 new Models.Roster { CourseId = 2, StudentId = 4 },  // Draco
-                new Models.Roster { CourseId = 2, StudentId = 5 },  // Neville
-                new Models.Roster { CourseId = 2, StudentId = 14 }, // Lavender
-                new Models.Roster { CourseId = 2, StudentId = 15 }, // Parvati
+                new Models.Roster { CourseId = 2, StudentId = 19 }, // Crabbe
+                new Models.Roster { CourseId = 2, StudentId = 20 }, // Goyle
+                new Models.Roster { CourseId = 2, StudentId = 21 }, // Pansy
                 new Models.Roster { CourseId = 2, StudentId = 22 }, // Blaise
                 new Models.Roster { CourseId = 2, StudentId = 23 }, // Theodore
-                new Models.Roster { CourseId = 2, StudentId = 32 }, // Hannah
-                new Models.Roster { CourseId = 2, StudentId = 33 }, // Susan
+                new Models.Roster { CourseId = 2, StudentId = 24 }, // Millicent
+                new Models.Roster { CourseId = 2, StudentId = 25 }, // Daphne
 
-                // Charms Class
-                new Models.Roster { CourseId = 3, StudentId = 1 },  // Harry
-                new Models.Roster { CourseId = 3, StudentId = 2 },  // Hermione
+                // Transfiguration - Ravenclaw
                 new Models.Roster { CourseId = 3, StudentId = 6 },  // Luna
-                new Models.Roster { CourseId = 3, StudentId = 7 },  // Ginny
-                new Models.Roster { CourseId = 3, StudentId = 24 }, // Millicent
-                new Models.Roster { CourseId = 3, StudentId = 25 }, // Daphne
+                new Models.Roster { CourseId = 3, StudentId = 8 },  // Cho
                 new Models.Roster { CourseId = 3, StudentId = 26 }, // Padma
                 new Models.Roster { CourseId = 3, StudentId = 27 }, // Michael
-                new Models.Roster { CourseId = 3, StudentId = 34 }, // Justin
-                new Models.Roster { CourseId = 3, StudentId = 35 }, // Ernie
+                new Models.Roster { CourseId = 3, StudentId = 28 }, // Terry
+                new Models.Roster { CourseId = 3, StudentId = 29 }, // Anthony
+                new Models.Roster { CourseId = 3, StudentId = 30 }, // Marietta
+                new Models.Roster { CourseId = 3, StudentId = 31 }, // Roger
 
-                // Herbology Class
-                new Models.Roster { CourseId = 4, StudentId = 5 },  // Neville
-                new Models.Roster { CourseId = 4, StudentId = 2 },  // Hermione
-                new Models.Roster { CourseId = 4, StudentId = 3 },  // Ron
-                new Models.Roster { CourseId = 4, StudentId = 8 },  // Cho
-                new Models.Roster { CourseId = 4, StudentId = 16 }, // Katie
-                new Models.Roster { CourseId = 4, StudentId = 17 }, // Angelina
-                new Models.Roster { CourseId = 4, StudentId = 30 }, // Marietta
-                new Models.Roster { CourseId = 4, StudentId = 31 }, // Roger
+                // Transfiguration - Hufflepuff
+                new Models.Roster { CourseId = 4, StudentId = 9 },  // Cedric
+                new Models.Roster { CourseId = 4, StudentId = 32 }, // Hannah
+                new Models.Roster { CourseId = 4, StudentId = 33 }, // Susan
+                new Models.Roster { CourseId = 4, StudentId = 34 }, // Justin
+                new Models.Roster { CourseId = 4, StudentId = 35 }, // Ernie
                 new Models.Roster { CourseId = 4, StudentId = 36 }, // Zacharias
                 new Models.Roster { CourseId = 4, StudentId = 37 }, // Wayne
 
-                // Defense Against the Dark Arts
+                // Potions - Gryffindor & Slytherin
                 new Models.Roster { CourseId = 5, StudentId = 1 },  // Harry
                 new Models.Roster { CourseId = 5, StudentId = 2 },  // Hermione
                 new Models.Roster { CourseId = 5, StudentId = 3 },  // Ron
-                new Models.Roster { CourseId = 5, StudentId = 9 },  // Cedric
-                new Models.Roster { CourseId = 5, StudentId = 10 }, // Fred
-                new Models.Roster { CourseId = 5, StudentId = 11 }, // George
-                new Models.Roster { CourseId = 5, StudentId = 18 }, // Oliver
-                new Models.Roster { CourseId = 5, StudentId = 28 }, // Terry
-                new Models.Roster { CourseId = 5, StudentId = 29 }, // Anthony
-                new Models.Roster { CourseId = 5, StudentId = 35 }, // Ernie
-                new Models.Roster { CourseId = 5, StudentId = 36 }, // Zacharias
+                new Models.Roster { CourseId = 5, StudentId = 5 },  // Neville
+                new Models.Roster { CourseId = 5, StudentId = 4 },  // Draco
+                new Models.Roster { CourseId = 5, StudentId = 19 }, // Crabbe
+                new Models.Roster { CourseId = 5, StudentId = 20 }, // Goyle
+                new Models.Roster { CourseId = 5, StudentId = 21 }, // Pansy
+                new Models.Roster { CourseId = 5, StudentId = 22 }, // Blaise
+                new Models.Roster { CourseId = 5, StudentId = 23 }, // Theodore
 
-                // Care of Magical Creatures
-                new Models.Roster { CourseId = 6, StudentId = 1 },  // Harry
-                new Models.Roster { CourseId = 6, StudentId = 2 },  // Hermione
-                new Models.Roster { CourseId = 6, StudentId = 3 },  // Ron
-                new Models.Roster { CourseId = 6, StudentId = 4 },  // Draco
-                new Models.Roster { CourseId = 6, StudentId = 5 },  // Neville
+                // Potions - Hufflepuff & Ravenclaw
                 new Models.Roster { CourseId = 6, StudentId = 6 },  // Luna
-                new Models.Roster { CourseId = 6, StudentId = 15 }, // Parvati
+                new Models.Roster { CourseId = 6, StudentId = 8 },  // Cho
                 new Models.Roster { CourseId = 6, StudentId = 26 }, // Padma
+                new Models.Roster { CourseId = 6, StudentId = 27 }, // Michael
                 new Models.Roster { CourseId = 6, StudentId = 32 }, // Hannah
-                new Models.Roster { CourseId = 6, StudentId = 33 }  // Susan
+                new Models.Roster { CourseId = 6, StudentId = 33 }, // Susan
+                new Models.Roster { CourseId = 6, StudentId = 34 }, // Justin
+                new Models.Roster { CourseId = 6, StudentId = 35 }, // Ernie
+
+                // Charms - Gryffindor
+                new Models.Roster { CourseId = 7, StudentId = 1 },  // Harry
+                new Models.Roster { CourseId = 7, StudentId = 2 },  // Hermione
+                new Models.Roster { CourseId = 7, StudentId = 3 },  // Ron
+                new Models.Roster { CourseId = 7, StudentId = 5 },  // Neville
+                new Models.Roster { CourseId = 7, StudentId = 10 }, // Fred
+                new Models.Roster { CourseId = 7, StudentId = 11 }, // George
+                new Models.Roster { CourseId = 7, StudentId = 12 }, // Seamus
+                new Models.Roster { CourseId = 7, StudentId = 13 }, // Dean
+                new Models.Roster { CourseId = 7, StudentId = 14 }, // Lavender
+                new Models.Roster { CourseId = 7, StudentId = 15 }, // Parvati
+                new Models.Roster { CourseId = 7, StudentId = 16 }, // Katie
+                new Models.Roster { CourseId = 7, StudentId = 17 }, // Angelina
+
+                // Charms - Slytherin
+                new Models.Roster { CourseId = 8, StudentId = 4 },  // Draco
+                new Models.Roster { CourseId = 8, StudentId = 19 }, // Crabbe
+                new Models.Roster { CourseId = 8, StudentId = 20 }, // Goyle
+                new Models.Roster { CourseId = 8, StudentId = 21 }, // Pansy
+                new Models.Roster { CourseId = 8, StudentId = 22 }, // Blaise
+                new Models.Roster { CourseId = 8, StudentId = 23 }, // Theodore
+                new Models.Roster { CourseId = 8, StudentId = 24 }, // Millicent
+                new Models.Roster { CourseId = 8, StudentId = 25 }, // Daphne
+
+                // Charms - Ravenclaw
+                new Models.Roster { CourseId = 9, StudentId = 6 },  // Luna
+                new Models.Roster { CourseId = 9, StudentId = 8 },  // Cho
+                new Models.Roster { CourseId = 9, StudentId = 26 }, // Padma
+                new Models.Roster { CourseId = 9, StudentId = 27 }, // Michael
+                new Models.Roster { CourseId = 9, StudentId = 28 }, // Terry
+                new Models.Roster { CourseId = 9, StudentId = 29 }, // Anthony
+                new Models.Roster { CourseId = 9, StudentId = 30 }, // Marietta
+                new Models.Roster { CourseId = 9, StudentId = 31 }, // Roger
+
+                // Charms - Hufflepuff
+                new Models.Roster { CourseId = 10, StudentId = 9 },  // Cedric
+                new Models.Roster { CourseId = 10, StudentId = 32 }, // Hannah
+                new Models.Roster { CourseId = 10, StudentId = 33 }, // Susan
+                new Models.Roster { CourseId = 10, StudentId = 34 }, // Justin
+                new Models.Roster { CourseId = 10, StudentId = 35 }, // Ernie
+                new Models.Roster { CourseId = 10, StudentId = 36 }, // Zacharias
+                new Models.Roster { CourseId = 10, StudentId = 37 }, // Wayne
+
+                // Herbology - Gryffindor & Hufflepuff
+                new Models.Roster { CourseId = 11, StudentId = 1 }, // Harry
+                new Models.Roster { CourseId = 11, StudentId = 2 }, // Hermione
+                new Models.Roster { CourseId = 11, StudentId = 3 }, // Ron
+                new Models.Roster { CourseId = 11, StudentId = 5 }, // Neville
+                new Models.Roster { CourseId = 11, StudentId = 32 }, // Hannah
+                new Models.Roster { CourseId = 11, StudentId = 33 }, // Susan
+                new Models.Roster { CourseId = 11, StudentId = 34 }, // Justin
+                new Models.Roster { CourseId = 11, StudentId = 35 }, // Ernie
+
+                // Herbology - Slytherin & Ravenclaw
+                new Models.Roster { CourseId = 12, StudentId = 4 },  // Draco
+                new Models.Roster { CourseId = 12, StudentId = 19 }, // Crabbe
+                new Models.Roster { CourseId = 12, StudentId = 20 }, // Goyle
+                new Models.Roster { CourseId = 12, StudentId = 21 }, // Pansy
+                new Models.Roster { CourseId = 12, StudentId = 6 },  // Luna
+                new Models.Roster { CourseId = 12, StudentId = 8 },  // Cho
+                new Models.Roster { CourseId = 12, StudentId = 26 }, // Padma
+                new Models.Roster { CourseId = 12, StudentId = 27 }, // Michael
+                new Models.Roster { CourseId = 12, StudentId = 28 }, // Terry
+                new Models.Roster { CourseId = 12, StudentId = 31 }, // Roger
+
+                // Defense Against Dark Arts - Gryffindor & Ravenclaw
+                new Models.Roster { CourseId = 13, StudentId = 1 }, // Harry
+                new Models.Roster { CourseId = 13, StudentId = 2 }, // Hermione
+                new Models.Roster { CourseId = 13, StudentId = 3 }, // Ron
+                new Models.Roster { CourseId = 13, StudentId = 6 }, // Luna
+                new Models.Roster { CourseId = 13, StudentId = 8 }, // Cho
+                new Models.Roster { CourseId = 13, StudentId = 28 }, // Terry
+                new Models.Roster { CourseId = 13, StudentId = 29 }, // Anthony
+
+                // Defense Against Dark Arts - Hufflepuff & Slytherin
+                new Models.Roster { CourseId = 14, StudentId = 4 },  // Draco
+                new Models.Roster { CourseId = 14, StudentId = 21 }, // Pansy
+                new Models.Roster { CourseId = 14, StudentId = 22 }, // Blaise
+                new Models.Roster { CourseId = 14, StudentId = 23 }, // Theodore
+                new Models.Roster { CourseId = 14, StudentId = 9 },  // Cedric
+                new Models.Roster { CourseId = 14, StudentId = 32 }, // Hannah
+                new Models.Roster { CourseId = 14, StudentId = 33 }, // Susan
+                new Models.Roster { CourseId = 14, StudentId = 34 }, // Justin
+                new Models.Roster { CourseId = 14, StudentId = 35 }, // Ernie
+                new Models.Roster { CourseId = 14, StudentId = 36 }, // Zacharias
+
+                // Care of Magical Creatures - Gryffindor & Slytherin
+                new Models.Roster { CourseId = 15, StudentId = 1 }, // Harry
+                new Models.Roster { CourseId = 15, StudentId = 2 }, // Hermione
+                new Models.Roster { CourseId = 15, StudentId = 3 }, // Ron
+                new Models.Roster { CourseId = 15, StudentId = 4 }, // Draco
+                new Models.Roster { CourseId = 15, StudentId = 19 }, // Crabbe
+                new Models.Roster { CourseId = 15, StudentId = 20 }, // Goyle
+                new Models.Roster { CourseId = 15, StudentId = 21 }, // Pansy
+                new Models.Roster { CourseId = 15, StudentId = 22 },  // Blaise
+
+                // Care of Magical Creatures - Hufflepuff & Ravenclaw
+                new Models.Roster { CourseId = 16, StudentId = 6 },  // Luna
+                new Models.Roster { CourseId = 16, StudentId = 8 },  // Cho
+                new Models.Roster { CourseId = 16, StudentId = 26 }, // Padma
+                new Models.Roster { CourseId = 16, StudentId = 27 }, // Michael
+                new Models.Roster { CourseId = 16, StudentId = 9 },  // Cedric
+                new Models.Roster { CourseId = 16, StudentId = 32 }, // Hannah
+                new Models.Roster { CourseId = 16, StudentId = 33 }, // Susan
+                new Models.Roster { CourseId = 16, StudentId = 34 }, // Justin
+                new Models.Roster { CourseId = 16, StudentId = 35 }, // Ernie
+                new Models.Roster { CourseId = 16, StudentId = 36 }  // Zacharias
             );
         }
     }
