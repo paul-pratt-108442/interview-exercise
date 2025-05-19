@@ -1,6 +1,29 @@
-# AppInterviewClient
+# Interview Exercise - School Information System
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.12.
+This application is designed as a technical coding exercise for job interviews. It provides a simplified school information system that demonstrates basic CRUD operations and Angular development practices.
+
+## About the Application
+
+This is a simplified school information management system that allows users to:
+- View and manage student information
+- View and manage staff information
+- Navigate between different sections of the application
+
+The application serves as a practical assessment tool for evaluating candidates' understanding of:
+- Angular framework and its core concepts
+- Component-based architecture
+- Routing and navigation
+- Basic CRUD operations
+- TypeScript/JavaScript proficiency
+- Frontend development best practices
+
+## Technical Stack
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 19.2.12 and includes:
+- Angular framework
+- TypeScript
+- Angular Router for navigation
+- Modern component-based architecture
 
 ## Development server
 
