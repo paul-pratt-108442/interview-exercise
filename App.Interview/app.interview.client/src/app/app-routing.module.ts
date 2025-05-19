@@ -7,7 +7,9 @@ import { StaffComponent } from './staff/staff.component';
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home' } },
   { path: 'students', component: StudentsComponent, data: { title: 'Students' } },
-  { path: 'staff', component: StaffComponent, data: { title: 'Staff' } }
+  { path: 'students/:id', component: StudentsComponent, data: { title: 'Students' } },
+  { path: 'staff', component: StaffComponent, data: { title: 'Staff' } },
+  { path: 'staff/:id', component: StaffComponent, data: { title: 'Staff' } }
 ];
 
 @NgModule({

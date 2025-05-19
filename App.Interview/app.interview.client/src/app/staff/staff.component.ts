@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { ActivatedRoute, Router } from '@angular/router';
 
 interface Course {
   courseId: number;
@@ -34,10 +35,28 @@ export class StaffComponent implements OnInit {
   displayedColumns: string[] = ['staffId', 'firstName', 'lastName'];
   courseColumns: string[] = ['courseId', 'courseName', 'rosters'];
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.fetchStaff();
+    
+    // Subscribe to route params
+    this.route.params.subscribe(params => {
+      const staffId = params['id'];
+      if (staffId) {
+        // Find and select the staff member once data is loaded
+        if (this.staff.length > 0) {
+          const staffMember = this.staff.find(s => s.staffId === +staffId);
+          if (staffMember) {
+            this.selectStaff(staffMember);
+          }
+        }
+      }
+    });
   }
 
   fetchStaff() {
@@ -50,6 +69,15 @@ export class StaffComponent implements OnInit {
           courses: member.courses || []
         }));
         this.loading = false;
+
+        // Check for route parameter after loading
+        const staffId = this.route.snapshot.params['id'];
+        if (staffId) {
+          const staffMember = this.staff.find(s => s.staffId === +staffId);
+          if (staffMember) {
+            this.selectStaff(staffMember);
+          }
+        }
       },
       error: (error) => {
         this.error = 'Failed to load staff';
@@ -61,6 +89,7 @@ export class StaffComponent implements OnInit {
 
   selectStaff(member: Staff) {
     this.selectedStaff = member;
+    this.router.navigate(['/staff', member.staffId]);
     this.fetchStaffCourses(member.staffId);
   }
 

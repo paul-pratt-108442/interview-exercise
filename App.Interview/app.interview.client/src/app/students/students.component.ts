@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { ActivatedRoute, Router } from '@angular/router';
 
 interface Staff {
   staffId: number;
@@ -47,10 +48,28 @@ export class StudentsComponent implements OnInit {
   displayedColumns: string[] = ['studentId', 'firstName', 'lastName'];
   courseColumns: string[] = ['courseId', 'courseName', 'staffName'];
   
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.fetchStudents();
+    
+    // Subscribe to route params
+    this.route.params.subscribe(params => {
+      const studentId = params['id'];
+      if (studentId) {
+        // Find and select the student once data is loaded
+        if (this.students.length > 0) {
+          const student = this.students.find(s => s.studentId === +studentId);
+          if (student) {
+            this.selectStudent(student);
+          }
+        }
+      }
+    });
   }
 
   fetchStudents() {
@@ -64,6 +83,15 @@ export class StudentsComponent implements OnInit {
           rosters: student.rosters || []
         }));
         this.loading = false;
+
+        // Check for route parameter after loading
+        const studentId = this.route.snapshot.params['id'];
+        if (studentId) {
+          const student = this.students.find(s => s.studentId === +studentId);
+          if (student) {
+            this.selectStudent(student);
+          }
+        }
       },
       error: (error) => {
         this.error = 'Failed to load students';
@@ -75,6 +103,7 @@ export class StudentsComponent implements OnInit {
 
   selectStudent(student: Student) {
     this.selectedStudent = student;
+    this.router.navigate(['/students', student.studentId]);
     this.fetchStudentCourses(student.studentId);
   }
 
