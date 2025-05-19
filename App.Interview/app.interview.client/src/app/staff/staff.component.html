@@ -1,34 +1,48 @@
-<div *ngIf="loading" class="loading">
-  Loading staff...
-</div>
+<div class="container">
+  <mat-sidenav-container>
+    <mat-sidenav mode="side" opened class="staff-list">
+      <div *ngIf="loading" class="loading">
+        Loading staff...
+      </div>
+      <div *ngIf="error" class="error">
+        {{ error }}
+      </div>
+      <mat-nav-list *ngIf="!loading && !error">
+        <a mat-list-item *ngFor="let member of staff" (click)="selectStaff(member)" [class.selected]="selectedStaff?.staffId === member.staffId">
+          {{member.firstName}} {{member.lastName}}
+        </a>
+        <p *ngIf="staff.length === 0" class="no-data">No staff found.</p>
+      </mat-nav-list>
+    </mat-sidenav>
 
-<div *ngIf="error" class="error">
-  {{ error }}
-</div>
+    <mat-sidenav-content class="content">
+      <div *ngIf="selectedStaff" class="course-container">
+        <h2>{{selectedStaff.firstName}} {{selectedStaff.lastName}} - Courses</h2>
+        
+        <mat-table [dataSource]="courses">
+          <ng-container matColumnDef="courseId">
+            <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+            <mat-cell *matCellDef="let course">{{course.courseId}}</mat-cell>
+          </ng-container>
 
-<div *ngIf="!loading && !error" class="table-container">
-  <mat-table *ngIf="staff.length > 0" [dataSource]="staff">
-    <!-- ID Column -->
-    <ng-container matColumnDef="staffId">
-      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
-      <mat-cell *matCellDef="let member">{{member.staffId}}</mat-cell>
-    </ng-container>
+          <ng-container matColumnDef="courseName">
+            <mat-header-cell *matHeaderCellDef>Course</mat-header-cell>
+            <mat-cell *matCellDef="let course">{{course.courseName}}</mat-cell>
+          </ng-container>
 
-    <!-- First Name Column -->
-    <ng-container matColumnDef="firstName">
-      <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
-      <mat-cell *matCellDef="let member">{{member.firstName}}</mat-cell>
-    </ng-container>
+          <ng-container matColumnDef="rosters">
+            <mat-header-cell *matHeaderCellDef>Students</mat-header-cell>
+            <mat-cell *matCellDef="let course">{{course.rosters.length}}</mat-cell>
+          </ng-container>
 
-    <!-- Last Name Column -->
-    <ng-container matColumnDef="lastName">
-      <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
-      <mat-cell *matCellDef="let member">{{member.lastName}}</mat-cell>
-    </ng-container>
+          <mat-header-row *matHeaderRowDef="courseColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: courseColumns;"></mat-row>
+        </mat-table>
+      </div>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
-
-  <p *ngIf="staff.length === 0" class="no-data">No staff found.</p>
+      <div *ngIf="!selectedStaff" class="no-selection">
+        Please select a staff member to view their courses.
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>

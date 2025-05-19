@@ -1,30 +1,63 @@
 /* Styles for staff component */
+.container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+mat-sidenav-container {
+  height: 100%;
+}
+
+.staff-list {
+  width: 200px;
+  background-color: #f5f5f5;
+}
+
 .content {
-  padding: 1rem;
-}
-
-.table-container {
-  width: 100%;
-  max-width: 800px;
-  overflow: auto;
-}
-
-.loading {
-  text-align: center;
   padding: 20px;
-  color: rgba(0, 0, 0, 0.54);
+}
+
+.course-container {
+  max-width: 800px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.selected {
+  background-color: #e0e0e0;
+}
+
+.no-selection {
+  color: #666;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+.loading,
+.error,
+.no-data {
+  padding: 20px;
+  text-align: center;
 }
 
 .error {
-  color: #dc3545;
-  padding: 10px;
-  margin: 10px 0;
-  background-color: #f8d7da;
-  border-radius: 4px;
+  color: red;
 }
 
-.no-data {
-  text-align: center;
-  color: rgba(0, 0, 0, 0.54);
-  padding: 20px;
+mat-table {
+  width: 100%;
+}
+
+mat-header-cell {
+  font-weight: bold;
+}
+
+mat-row:hover {
+  background-color: #f8f8f8;
 }

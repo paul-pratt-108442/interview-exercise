@@ -26,6 +26,7 @@ namespace App.Interview.Server.Controllers
         public async Task<ActionResult<IEnumerable<Course>>> GetStaffCourses(int staffId)
         {
             var courses = await _context.Courses
+                .Include(c => c.Rosters)
                 .Where(c => c.StaffId == staffId)
                 .ToListAsync();
 
