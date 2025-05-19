@@ -1,5 +1,3 @@
-# interview-exercise
-
 # Interview Exercise - School Information System
 
 This application is designed as a technical coding exercise for interviews. It provides a simplified school information system that demonstrates basic CRUD operations and Angular development practices.
