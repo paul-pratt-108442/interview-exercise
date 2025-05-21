@@ -4,7 +4,7 @@ using Microsoft.Data.Sqlite;
 var builder = WebApplication.CreateBuilder(args);
 
 // Create a SQLite connection that will be kept open for the lifetime of the application
-var connection = new SqliteConnection("Data Source=:memory:");
+var connection = new SqliteConnection("Data Source=app.db");
 connection.Open();
 
 // Add services to the container.
